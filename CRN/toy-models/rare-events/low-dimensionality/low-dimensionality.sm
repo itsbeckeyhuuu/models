@@ -1,0 +1,40 @@
+ctmc
+
+// Reaction coefficients
+const double k_r1 = 0.01;
+const double k_r2 = 0.01;
+const double k_r3 = 1000.0;
+
+// Species A
+module A
+  A  :  int init 0;
+    [R1] A >= 0 -> (A' = A + 1);
+    [R2] A >= 1 -> (A' = A - 1);
+    [R3] A >= 1 -> (A' = A - 1);
+endmodule
+
+// Species B
+module B
+  B  :  int init 0;
+    [R2] B >= 0 -> (B' = B + 1);
+endmodule
+
+// Reaction rates
+module reaction_rates
+
+    // R1: 0 -> A
+    [R1] k_r1 > 0 -> k_r1 : true;
+
+    // R2: A -> B
+    [R2] (k_r2 * A) > 0 -> (k_r2 * A) : true;
+
+    // R3: A -> 0
+    [R3] (k_r3 * A) > 0 -> (k_r3 * A) : true;
+
+endmodule
+
+// Reward structures (one per species)
+// Reward 1: A
+rewards "A" true : A; endrewards
+// Reward 2: B
+rewards "B" true : B; endrewards
