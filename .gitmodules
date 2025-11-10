@@ -1,0 +1,3 @@
+[submodule "CRN/toy-models"]
+	path = CRN/toy-models
+	url = https://gitmoss.fyi/research/toy-models.git
