@@ -3,7 +3,7 @@ ctmc
 // Reaction coefficients
 const double k_r1 = 0.01;
 const double k_r2 = 0.01;
-const double k_r3 = 1000.0;
+const double k_r3 = 100.0;
 
 // Species A
 module A
