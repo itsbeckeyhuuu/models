@@ -1,0 +1,18 @@
+species A init 0
+species B init 0
+species C init 0
+target C = 10
+reaction R1
+    produce A
+    const 0.1
+reaction R2
+    consume A
+    produce B
+    const 0.1
+reaction R3
+    consume B
+    produce C
+    const 0.1
+reaction R4
+    consume A
+    const 100
