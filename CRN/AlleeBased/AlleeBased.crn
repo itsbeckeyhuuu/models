@@ -1,0 +1,18 @@
+species L init 150000000
+species H init 0
+
+reaction R1
+    consume H
+    produce L
+    const 14 * H
+
+reaction R2
+    consume L
+    consume H
+    produce H
+    const (35 * L) / (1 + pow(80000000.0 / H, 4))
+
+reaction R3
+    consume L
+    produce H
+    const 4 * L
