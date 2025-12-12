@@ -1,9 +1,10 @@
 ctmc
 
 // Reaction coefficients
-const double k_r1 = 0.01;
-const double k_r2 = 0.01;
-const double k_r3 = 100.0;
+const double k_r1 = 0.1;
+const double k_r2 = 0.1;
+const double k_r3 = 0.1;
+const double k_r4 = 100.0;
 
 // Species A
 module A
@@ -34,10 +35,13 @@ module reaction_rates
 
     // R2: A -> B
     [R2] (k_r2 * A) > 0 -> (k_r2 * A) : true;
+  
+    // R3: B -> C
+    [R3] (k_r3 * B) > 0 -> (k_r3 * B) : true;
 
-    // R3: A -> 0
-    [R3] (k_r3 * A) > 0 -> (k_r3 * A) : true;
-
+    // R4: A -> 0
+    [R4] (k_r3 * A) > 0 -> (k_r3 * A) : true;
+    
 endmodule
 
 // Reward structures (one per species)
@@ -45,3 +49,5 @@ endmodule
 rewards "A" true : A; endrewards
 // Reward 2: B
 rewards "B" true : B; endrewards
+// Reward 2: C
+rewards "C" true : C; endrewards
